@@ -1,9 +1,8 @@
 {
-  "name": "Socket-Chat-Example",
-  "description": "my first socket.io app",
-  "website": "https://github.com/socketio/chat-example",
-  "repository": "https://github.com/socketio/chat-example",
-  "logo": "https://node-js-sample.herokuapp.com/node.svg",
+  "name": "Stomp Exploration",
+  "description": "Waluigi needs to be in smash",
+  "website": "https://github.com/MStumpo/Stump_exploration",
+  "repository": "https://github.com/MStumpo/Stump_exploration",
   "success_url": "/",
   "keywords": [
     "node",

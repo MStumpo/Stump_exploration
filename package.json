@@ -1,7 +1,7 @@
 {
-  "name": "socket-chat-example",
+  "name": "Stomp Exploration",
   "version": "0.0.1",
-  "description": "my first socket.io app",
+  "description": "Waluigi needs to be in smash",
   "dependencies": {
     "build": "^0.1.4",
     "dev": "^0.1.3",
