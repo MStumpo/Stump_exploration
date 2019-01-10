@@ -3,16 +3,24 @@ var app = express();
 var server = require('http').Server(app);
 var io = require('socket.io').listen(server);
 
+var port = process.env.PORT || 3000;
 server.lastPlayderID = 0; // Keep track of the last id assigned to a new player
 
 
+
+server.listen(port, function(){
+  console.log('listening on port ' + port + ', time to... try not to fail...');
+});
+
+
+//Links and stuuuff
 app.get('/', function(req, res){
-  res.sendFile(__dirname + '/views/index.html');
+  res.sendFile('/home/anonymous/projects/websites/IOgame/views/index.html');
 });
 
 
 app.get('/game', function(req, res){
-  res.sendFile(__dirname + '/views/game.html');
+  res.sendFile('/home/anonymous/projects/websites/IOgame/views/game.html');
 });
 
 io.on('connection',function(socket){

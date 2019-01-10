@@ -16,5 +16,39 @@
   </head>
   <body>
     <h1>Wow this shit does absolutely nothing ._.</h1>
+    <div id="game"></div>
   </body>
+  <script type="text/javascript" src="~/home/anonymous/projects/websites/IOgame/js/game.js"></script>
+  <script type="text/javascript">
+    $(function(){
+      //        Alright listen up ya little shits, this code right here is identical to the code in client.js (at least when I copied it, duh), so you fuckers better know that the final intention is to put this in a fucking js file later but rn fuck it
+      //        Happy coding and peace ooot 
+      console.log('WAH MOTHAFUKAS THE CLIENT CODE JUST LOADED');
+      var Client = {};
+Client.socket = io.connect();
+Client.askNewPlayer = function(){
+    Client.socket.emit('newplayer');
+};
+Client.socket.on('newplayer',function(data){
+    Game.addNewPlayer(data.id,data.x,data.y);
+});
+
+Client.socket.on('allplayers',function(data){
+    console.log(data);
+    for(var i = 0; i < data.length; i++){
+        Game.addNewPlayer(data[i].id,data[i].x,data[i].y);
+    }
+});
+Client.socket.on('remove',function(id){
+    Game.removePlayer(id);
+});
+Client.sendClick = function(x,y){ //COORDINATES DICKHEAD
+  Client.socket.emit('click',{x:x,y:y});
+  console.log('The player (I dont fucking know who) just clicked on: '+ x + ' , ' + y);
+};
+Client.socket.on('move',function(data){
+    Game.movePlayer(data.id,data.x,data.y);
+});
+    });
+  </script>
 </html>

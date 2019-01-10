@@ -3,12 +3,14 @@
       game.state.start('Game');
       var Game = {};
 
+      console.log('the game.js code just loaded biiitch yee');
+
       Game.preload = function() {
         //WARNING, MAKE FILES HERE
-          game.load.tilemap('map', 'assets/map/example_map.json', null, Phaser.Tilemap.TILED_JSON);
+          game.load.tilemap('map', '/home/anonymous/Pictures/map.png', null, Phaser.Tilemap.TILED_JSON); // IT'S SET TO A WEIRD THINGY AND IT'S 1000 X 1000 px
           game.load.spritesheet('tileset', 'assets/map/tilesheet.png',32,32);
-          game.load.image('sprite','assets/sprites/sprite.png'); // this will be the sprite of the players
-      };
+          game.load.image('sprite','assets/sprites/sprite.png'); // the player sprite
+          };
 Game.create = function(){
     Game.playerMap = {};
     var map = game.add.tilemap('map');
