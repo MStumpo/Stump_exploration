@@ -8,24 +8,32 @@
   <-->
 <html>
   <head>
-    <title>Zocial - the actual chat ._.</title>
+    <title>Im a tab lol</title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
    <style type="text/css">
+   #goback{
+    margin-top: 1500px;
+   }
 </style>
+<audio>
+  <source src="../BGMusic.wav" type="audio/wav">
   </head>
   <body>
-    <h1>Wow this shit does absolutely nothing ._.</h1>
     <div id="game"></div>
-  </body>
-  <script type="text/javascript" src="~/home/anonymous/projects/websites/IOgame/js/game.js"></script>
+    <a href="/" id="goback">
+    <img src="https://i.imgur.com/nD7XBIk.jpg?fb" onclick="/">
+    </a>
+    </body>
+   <script src="http://localhost:3000/socket.io/socket.io.js"></script>
+     <script src="//cdn.jsdelivr.net/npm/phaser@3.15.1/dist/phaser.js"></script>
   <script type="text/javascript">
     $(function(){
       //        Alright listen up ya little shits, this code right here is identical to the code in client.js (at least when I copied it, duh), so you fuckers better know that the final intention is to put this in a fucking js file later but rn fuck it
       //        Happy coding and peace ooot 
-      console.log('WAH MOTHAFUKAS THE CLIENT CODE JUST LOADED');
       var Client = {};
 Client.socket = io.connect();
+      console.log('WAH MOTHAFUKAS THE CLIENT CODE JUST LOADED');
 Client.askNewPlayer = function(){
     Client.socket.emit('newplayer');
 };
@@ -50,5 +58,116 @@ Client.socket.on('move',function(data){
     Game.movePlayer(data.id,data.x,data.y);
 });
     });
+  </script>
+
+     <script type="text/javascript">
+
+var config = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 600,
+    physics: {
+        default: 'arcade',
+        arcade: {
+            gravity: { y: 300 },
+            debug: false
+        }
+    },
+    scene: {
+        preload: preload,
+        create: create,
+        update: update
+    }
+};
+
+var game = new Phaser.Game(config);
+
+function preload ()
+{
+      this.load.image('sky', 'assets/sky.png');
+    this.load.image('ground', 'assets/platform.png');
+    this.load.image('star', 'assets/star.png');
+    this.load.image('bomb', 'assets/bomb.png');
+    this.load.spritesheet('dude', 
+        'assets/dude.png',
+        { frameWidth: 32, frameHeight: 48 }
+    );
+
+    this.anims.create({
+    key: 'left',
+    frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+    frameRate: 10,
+    repeat: -1
+});
+    this.anims.create({
+    key: 'left',
+    frames: this.anims.generateFrameNumbers('dude', { start: 0, end: 3 }),
+    frameRate: 10,
+    repeat: -1
+});
+
+this.anims.create({
+    key: 'turn',
+    frames: [ { key: 'dude', frame: 4 } ],
+    frameRate: 20
+});
+
+this.anims.create({
+    key: 'right',
+    frames: this.anims.generateFrameNumbers('dude', { start: 5, end: 8 }),
+    frameRate: 10,
+    repeat: -1
+});
+}
+
+var platforms;
+
+function create ()
+{
+  player = this.physics.add.sprite(100, 450, 'dude');
+
+player.setBounce(0.2);
+player.setCollideWorldBounds(true);
+player.body.setGravityY(300);
+this.physics.add.collider(player, platforms);
+
+
+
+  platforms = this.physics.add.staticGroup();
+    this.add.image(400, 300, 'sky');
+
+    platforms = this.physics.add.staticGroup();
+platforms.create(400, 568, 'ground').setScale(2).refreshBody();
+
+platforms.create(600, 400, 'ground');
+platforms.create(50, 250, 'ground');
+platforms.create(750, 220, 'ground');
+
+}
+
+//cursors = this.input.keyboard.createCursorKeys();
+
+function update ()
+{
+/*
+if (cursors.left.isDown)
+{
+    player.setVelocityX(-160);
+}
+else if (cursors.right.isDown)
+{
+    player.setVelocityX(160);
+}
+else
+{
+    player.setVelocityX(0);
+}
+
+if (cursors.up.isDown && player.body.touching.down)
+{
+    player.setVelocityY(-330);
+}
+}
+*/
   </script>
 </html>

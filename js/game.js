@@ -1,13 +1,9 @@
+
       var game = new Phaser.Game(16*32, 600, Phaser.AUTO, document.getElementById('game'));
-      game.state.add('Game',Game);
-      game.state.start('Game');
-      var Game = {};
-
-      console.log('the game.js code just loaded biiitch yee');
-
+            var Game = {};
       Game.preload = function() {
         //WARNING, MAKE FILES HERE
-          game.load.tilemap('map', '/home/anonymous/Pictures/map.png', null, Phaser.Tilemap.TILED_JSON); // IT'S SET TO A WEIRD THINGY AND IT'S 1000 X 1000 px
+          game.load.tilemap('map', 'Pictures/map.png', null, Phaser.Tilemap.TILED_JSON); // IT'S SET TO A WEIRD THINGY AND IT'S 1000 X 1000 px
           game.load.spritesheet('tileset', 'assets/map/tilesheet.png',32,32);
           game.load.image('sprite','assets/sprites/sprite.png'); // the player sprite
           };
@@ -41,3 +37,7 @@ Game.movePlayer = function(id,x,y){
     tween.to({x:x,y:y}, duration);
     tween.start();
 };
+      game.state.add('Game',Game);
+      game.state.start('Game');
+
+      console.log('the game.js code just loaded biiitch yee');
